@@ -21,6 +21,7 @@ services:
       - POSTGRES_DB=odoo_16
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
+    ports:
       - "5433:5432"
     volumes:
       - postgresql-odo-16:/var/lib/postgresql
@@ -32,8 +33,6 @@ services:
     container_name: pgadmin_odoo_16
     image: dpage/pgadmin4
     restart: always
-    volumes:
-      - ./pg_admin:/var/lib/pgadmin
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=root
